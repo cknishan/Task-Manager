@@ -1,3 +1,9 @@
-export const PORT = 5555;
+// Require dotenv and load the .env file
 
-export const mongoDBURL = "mongodb+srv://nishanchakmanish:<password>@cluster0.17bg20v.mongodb.net/books-collection?retryWrites=true&w=majority?"
+import dotenv from "dotenv"
+dotenv.config()
+
+const PORT = process.env.PORT;
+const mongodbURL = process.env.MONGO_KEY;
+
+export { PORT, mongodbURL }
