@@ -5,13 +5,14 @@ import { Task } from "./models/taskModel.js";
 
 const app = express();
 
+// Middleware for parsing request body
+app.use(express.json())
+
 app.get('/', (request, response) => {
     console.log(request)
     return response.status(234).send('Welcome to MERN Tutorial')
 });
 
-// Middleware for parsing request body
-app.use(express.json())
 
 // Route for saving a new Task\
 app.post('/tasks', async (request, response) => {
@@ -35,7 +36,7 @@ app.post('/tasks', async (request, response) => {
         };
 
         const task = await Task.create(newTask)
-
+        return response.status(201).send(task);
     } catch (error) {
         console.log(err.message)
         response.status(500).send({ message: error.message })
