@@ -14,7 +14,7 @@ app.get('/', (request, response) => {
 });
 
 
-// Route for saving a new Task\
+// Route for saving a new Task
 app.post('/tasks', async (request, response) => {
     try {
         if (
@@ -42,6 +42,23 @@ app.post('/tasks', async (request, response) => {
         response.status(500).send({ message: error.message })
     }
 })
+
+// Route to get all the tasks from database
+app.get('/tasks', async (request, response) => {
+    try {
+        const tasks = await Task.find({});
+
+        return response.status(200).json(
+            {
+                count: tasks.length,
+                data: tasks
+            }
+        );
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
 
 mongoose
     .connect(mongodbURL)
