@@ -60,6 +60,20 @@ app.get('/tasks', async (request, response) => {
     }
 });
 
+// Route to get task by id from database
+app.get('/tasks/:id', async (request, response) => {
+    try {
+        const { id } = request.params
+        const task = await Task.findById(id);
+
+        return response.status(200).json(task);
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
+
+
 mongoose
     .connect(mongodbURL)
     .then(() => {
