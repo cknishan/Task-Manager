@@ -73,6 +73,34 @@ app.get('/tasks/:id', async (request, response) => {
     }
 });
 
+// Updating a Book
+app.put('/tasks/:id', async (request, response) => {
+    try {
+        if (
+            !request.body.name ||
+            !request.body.tag ||
+            !request.body.deadline ||
+            !request.body.priority
+        ) {
+            return response.status(400).send({
+                messgage: 'Send all required fields: name, tag, deadline and priority'
+            })
+        }
+
+        const { id } = request.params
+        const result = await Task.findByIdAndUpdate(id, request.body)
+
+        if (!result) {
+            return response.status(404).json({ message: 'Book not found' })
+        }
+
+        return response.status(200).send({ messgae: 'Book updataed successfully' })
+
+    } catch (error) {
+        console.log(error.message);
+        response.status(500).send({ message: error.message });
+    }
+});
 
 mongoose
     .connect(mongodbURL)
