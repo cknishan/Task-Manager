@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const EditTask = () => {
+const EditTask = () => {
     return (
         <div>EditTask</div>
     )
 }
+
+export default EditTask

@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const DeleteTask = () => {
+const DeleteTask = () => {
     return (
         <div>DeleteTask</div>
     )
 }
+
+export default DeleteTask

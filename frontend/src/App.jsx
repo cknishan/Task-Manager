@@ -6,7 +6,7 @@ import ShowTask from './pages/ShowTask'
 import DeleteTask from './pages/DeleteTask'
 import EditTask from './pages/EditTask'
 
-export const App = () => {
+const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />} />
@@ -17,3 +17,5 @@ export const App = () => {
     </Routes>
   )
 }
+
+export default App
