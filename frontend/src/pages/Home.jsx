@@ -16,7 +16,7 @@ const Home = () => {
             .get('http://localhost:5555/tasks')
             .then((response) => {
                 setTasks(response.data.data);
-                console.log(tasks)
+                // console.log(tasks)
                 setLoading(false);
             })
             .catch((error) => {
@@ -52,15 +52,15 @@ const Home = () => {
                     </thead>
                     <tbody>
                         {tasks.map((task, index) => {
-                            <tr key={task._id} className='h-8'>
-                                <tr className="border border-slate-600 rounded-md">{index + 1}</tr>
-                                <tr className="border border-slate-600 rounded-md">{task.name}</tr>
-                                <tr className="border border-slate-600 rounded-md max-md:hidden">{task.tag}</tr>
-                                <tr className="border border-slate-600 rounded-md">
+                            <div key={task._id} className='h-8'>
+                                <td className="border border-slate-600 rounded-md">{index + 1}</td>
+                                <td className="border border-slate-600 rounded-md">{task.name}</td>
+                                <td className="border border-slate-600 rounded-md max-md:hidden">{task.tag}</td>
+                                <td className="border border-slate-600 rounded-md">
                                     {task.deadline}
-                                </tr>
-                                <tr className="border border-slate-600 rounded-md">{task.priority}</tr>
-                                <tr className="border border-slate-600 rounded-md">
+                                </td>
+                                <td className="border border-slate-600 rounded-md">{task.priority}</td>
+                                <td className="border border-slate-600 rounded-md">
                                     <div className="flex justify-center gap-x-4">
                                         <Link to={`/tasks/details/${task._id}`}>
                                             <BsInfoCircle className='text-2xl text-green-800' />
@@ -72,13 +72,14 @@ const Home = () => {
                                             <MdOutlineDelete className='text-2xl text-green-800' />
                                         </Link>
                                     </div>
-                                </tr>
-                            </tr>
+                                </td>
+                            </div>
                         })}
                     </tbody>
                 </table>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 };
 
