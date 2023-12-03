@@ -91,7 +91,7 @@ router.put('/:id', async (request, response) => {
 });
 
 // Delete a Book
-router.delete('/tasks/:id', async (request, response) => {
+router.delete('/:id', async (request, response) => {
     try {
 
         const { id } = request.params
