@@ -16,7 +16,7 @@ const EditTask = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        setLoading(true)
+        setLoading(false)
         axios.get(`http://localhost:5555/tasks/${id}`)
             .then(response => {
                 setName(response.data.name)
