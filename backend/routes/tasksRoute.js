@@ -27,7 +27,6 @@ router.post('/', async (request, response) => {
         const task = await Task.create(newTask)
         return response.status(201).send(task);
     } catch (error) {
-        console.log(err.message)
         response.status(500).send({ message: error.message })
     }
 })
