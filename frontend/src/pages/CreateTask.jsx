@@ -13,7 +13,7 @@ const CreateTask = () => {
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleSaveBook = () => {
+    const handleSaveTask = () => {
         const data = {
             name,
             tag,
@@ -76,7 +76,7 @@ const CreateTask = () => {
                         className='border-2 border-gray-500 px-4 py-2 w-full'
                     />
                 </div>
-                <button className='p-2 bg-sky-300 m-8' onClick={handleSaveBook}>
+                <button className='p-2 bg-sky-300 m-8' onClick={handleEditTask}>
                     Save
                 </button>
             </div>

@@ -67,10 +67,10 @@ const Home = () => {
                                                 <BsInfoCircle className='text-2xl text-green-800' />
                                             </Link>
                                             <Link to={`/tasks/edit/${task._id}`}>
-                                                <AiOutlineEdit className='text-2xl text-green-800' />
+                                                <AiOutlineEdit className='text-2xl text-yellow-500' />
                                             </Link>
                                             <Link to={`/tasks/delete/${task._id}`}>
-                                                <MdOutlineDelete className='text-2xl text-green-800' />
+                                                <MdOutlineDelete className='text-2xl text-red-500' />
                                             </Link>
                                         </div>
                                     </td>
