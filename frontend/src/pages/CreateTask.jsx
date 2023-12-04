@@ -3,6 +3,7 @@ import BackButton from '../components/BackButton';
 import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 const CreateTask = () => {
 
@@ -12,6 +13,8 @@ const CreateTask = () => {
     const [priority, setPriority] = useState('')
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+    const { enqueueSnackbar } = useSnackbar();
+
 
     const handleSaveTask = () => {
         const data = {
@@ -25,10 +28,12 @@ const CreateTask = () => {
             .post('http://localhost:5555/tasks', data)
             .then(() => {
                 setLoading(false)
+                enqueueSnackbar('Task Created successfully', { variant: 'success' });
                 navigate('/')
             })
             .catch(error => {
                 setLoading(false)
+                enqueueSnackbar('Error', { variant: 'error' });
             })
     }
 
